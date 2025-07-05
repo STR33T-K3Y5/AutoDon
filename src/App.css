@@ -1,0 +1,441 @@
+
+.image-container {
+  position: relative;
+  width: 100vw;         
+  max-height: 500px;    
+  overflow: hidden;     
+}
+
+.image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;    
+  display: block;
+}
+
+.header {
+  position: absolute;
+  top: 15%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: white;
+  margin: 0;
+  font-size: 2rem;
+  text-align: center;
+  text-shadow: 2px 2px 6px rgba(0,0,0,0.7);
+  padding: 0;      
+}
+
+.header-motto{
+  position: absolute;
+  top: 40%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: white;
+  font-size: 2.2rem;
+  text-align: center;
+  text-shadow: 1px 1px 4px rgba(0,0,0,0.7);
+  margin-top: 80px;
+}
+
+
+html, body {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  padding-top: 20px;
+}
+
+/* Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Navbar Styling */
+.navbar {
+  width: 100%;
+  background-color: #1B212A;
+  padding: 12px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: white;
+  flex-wrap: wrap;
+}
+
+.navbar-left {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.logo {
+  font-size: 1.5rem;
+  color: #00ADB5;
+}
+
+.nav-link {
+  text-decoration: none;
+  color: white;
+  font-size: 1rem;
+  transition: color 0.2s ease;
+}
+
+.nav-link:hover {
+  color: #00ADB5;
+}
+
+.navbar-right {
+  flex-grow: 1;
+  display: flex;
+  justify-content: flex-end;
+}
+
+/* You can adjust this if SearchBar has its own styles */
+.navbar-right input {
+  padding: 6px 10px;
+  font-size: 1rem;
+  border-radius: 4px;
+  border: none;
+  outline: none;
+}
+
+/* Navbar base */
+.navbar {
+  position: fixed;         
+  top: 0;                 
+  left: 0;
+  width: 100%;
+  z-index: 1000;           
+  background-color: #000;
+  padding: 12px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: #fff;
+  flex-wrap: wrap;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.5);
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* Left side: logo and links */
+.navbar-left {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.logo {
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: #fff;
+  user-select: none;
+  letter-spacing: 1.5px;
+}
+
+.logo a {
+  color: #fff;
+  text-decoration: none;
+}
+
+.logo a:hover {
+  color: #ddd; /* Light grey on hover */
+}
+
+.nav-link {
+  text-decoration: none;
+  color: #ccc; /* light grey */
+  font-size: 1rem;
+  transition: color 0.3s ease;
+}
+
+.nav-link:hover {
+  color: #f8faff; /* white on hover */
+}
+
+/* Right side: search bar container */
+.navbar-right {
+  flex-grow: 1;
+  display: flex;
+  justify-content: flex-end;
+}
+
+/* Search input styling */
+.search-input {
+  padding: 6px 14px;
+  font-size: 1rem;
+  border-radius: 6px;
+  border: 1.5px solid #555; 
+  background-color: #222; 
+  color: #fff;
+  outline: none;
+  transition: border-color 0.3s ease, background-color 0.3s ease;
+  width: 280px;
+  max-width: 100%;
+}
+
+.search-input::placeholder {
+  color: #888; 
+}
+
+.search-input:focus {
+  border-color: #aaa; 
+  background-color: #000; 
+}
+
+.search-btn {
+  padding: 6px 14px;
+  font-size: 1rem;
+  border-radius: 6px;
+  border: 1.5px solid #555;
+  background-color: #111;
+  color: #fff;
+  cursor: pointer;
+  transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+
+.search-btn:hover {
+  background-color: #222;
+  border-color: #888;
+}
+
+
+/* Media Queries */
+@media (max-width: 600px) {
+  .navbar-left {
+    flex-basis: 100%;
+    justify-content: center;
+    margin-bottom: 8px;
+  }
+
+  .navbar-right {
+    flex-basis: 100%;
+    justify-content: center;
+  }
+
+  .search-input {
+    width: 100%;
+    max-width: none;
+  }
+}
+
+@media (min-width: 150px) and (max-width: 590px) {
+  html, body {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    padding-top: 45px;
+  }
+}
+
+
+/* --- Landing Content Section --- */
+.landing-content {
+  background-color: #ffffff; /* Dark grey background */
+  color: #fffdfd;
+  padding: 40px 20px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  text-align: center;
+}
+
+.section-header {
+  font-size: 2.5rem;
+  margin-bottom: 40px;
+  color: #000000;
+  letter-spacing: 1.2px;
+}
+
+/* Grid of icons */
+.icon-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 30px;
+  margin-bottom: 60px;
+}
+
+.icon-card {
+  background-color: #222; /* Slightly lighter dark */
+  border-radius: 12px;
+  padding: 30px 20px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.4);
+  transition: background-color 0.3s ease, transform 0.3s ease;
+  cursor: pointer;
+}
+
+.icon-card:hover {
+  background-color: #ebeded; /* Accent turquoise */
+  transform: translateY(-6px);
+  color: #283855;
+}
+
+.icon {
+  font-size: 3.5rem;
+  display: block;
+  margin-bottom: 15px;
+}
+
+/* Icon container */
+.icon {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 80px; /* control height of icon area */
+  margin-bottom: 15px;
+}
+
+/* Actual image inside the icon-card */
+.div-icon {
+  max-height: 100%;
+  max-width: 100%;
+  height: auto;
+  width: auto;
+  object-fit: contain;
+}
+
+
+/* Footer */
+.footer {
+  background-color: #060606;
+  padding: 40px 20px;
+  width: 100%;
+  color: #fff;
+  text-align: center;
+  font-size: 1rem;
+}
+
+.footer-note {
+  margin-top: 60px;
+  color: #ffffff; /* Light grey for footer note */
+}
+.footer h2 {
+  margin-bottom: 25px;
+  font-size: 2rem;
+  letter-spacing: 1.1px;
+}
+
+/* Contact Form */
+.contact-form {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 26px;
+  width: 100%;
+}
+
+.contact-form input,
+.contact-form textarea {
+  padding: 12px 16px;
+  border-radius: 6px;
+  border: 1.5px solid #555;
+  background-color: #222;
+  color: #fff;
+  font-size: 1rem;
+  resize: vertical;
+  outline: none;
+  transition: border-color 0.3s ease, background-color 0.3s ease;
+}
+
+.contact-form input::placeholder,
+.contact-form textarea::placeholder {
+  color: #888;
+}
+
+.contact-form input:focus,
+.contact-form textarea:focus {
+  border-color: #ffffff;
+  background-color: #000;
+}
+
+.contact-form button {
+  padding: 14px;
+  border: none;
+  border-radius: 8px;
+  background-color: #f1f6f6;
+  color: #000;
+  font-weight: 700;
+  font-size: 1.1rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.contact-form button:hover {
+  background-color: #545757;
+}
+
+/* Results Container */
+
+.results-container {
+  padding-top: 100px; /* Adjust for fixed navbar height */
+  padding-left: 20px;
+  padding-right: 20px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 20px;
+}
+
+.part-card {
+  background-color: #111;
+  border: 1px solid #333;
+  border-radius: 8px;
+  padding: 16px;
+  color: #fff;
+  text-align: center;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+  transition: transform 0.2s ease;
+}
+
+.part-card:hover {
+  transform: translateY(-4px);
+}
+
+.part-image {
+  width: 100%;
+  max-height: 180px;
+  object-fit: cover;
+  border-radius: 6px;
+  margin-bottom: 12px;
+}
+
+.no-results {
+  color: #aaa;
+  font-size: 1.2rem;
+  padding: 40px 0;
+}
+
+
+/* Responsive tweaks */
+@media (max-width: 600px) {
+  .section-header {
+    font-size: 2rem;
+  }
+
+  .icon-card {
+    padding: 24px 16px;
+  }
+
+  .icon {
+    font-size: 3rem;
+  }
+}
+
+body, #root {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.footer {
+  margin-top: auto;
+}
+
+@media (min-width: 768px) {
+  .results-container {
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+}
