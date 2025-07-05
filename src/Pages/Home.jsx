@@ -1,6 +1,12 @@
 import '../App.css';
 import Navbar from '../components/Navbar';
 
+import autoPartsImage from '../images/autoparts-image.webp';
+import carIcon from '../images/car.png';
+import numberPlateIcon from '../images/number-plate.png';
+import numbersIcon from '../images/numbers.png';
+import spannerIcon from '../images/spanner.png';
+
 export default function Home() {
   return (
     <>
@@ -9,7 +15,7 @@ export default function Home() {
 
       {/* Hero Section */}
       <div className="image-container">
-        <img src="src/images/autoparts-image.webp" className="image" alt="AutoParts Image" />
+        <img src={autoPartsImage} className="image" alt="AutoParts Image" />
         <h1 className="header">AUTODON</h1>
         <p className="header-motto">Your Trusted Service Partner</p>
       </div>
@@ -21,28 +27,28 @@ export default function Home() {
         <div className="icon-grid">
           <div className="icon-card">
             <span className="icon">
-              <img src='src/images/car.png' alt='barcode icon' className='div-icon'/>
+              <img src={carIcon} alt="car icon" className="div-icon" />
             </span>
             <h3>Parts By Car Model</h3>
           </div>
 
           <div className="icon-card">
             <span className="icon">
-              <img src='src/images/number-plate.png' alt='number-plate icon' className='div-icon'/>
+              <img src={numberPlateIcon} alt="number plate icon" className="div-icon" />
             </span>
             <h3>Parts By VIN</h3>
           </div>
 
           <div className="icon-card">
             <span className="icon">
-              <img src='src/images/numbers.png' alt='barcode icon' className='div-icon'/>
+              <img src={numbersIcon} alt="numbers icon" className="div-icon" />
             </span>
             <h3>Parts By Model Number</h3>
           </div>
 
           <div className="icon-card">
             <span className="icon">
-              <img src='src/images/spanner.png' alt='barcode icon' className='div-icon'/>
+              <img src={spannerIcon} alt="spanner icon" className="div-icon" />
             </span>
             <h3>Parts By Part Number</h3>
           </div>
@@ -63,5 +69,3 @@ export default function Home() {
     </>
   );
 }
-
-
