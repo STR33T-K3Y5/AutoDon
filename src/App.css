@@ -1,3 +1,56 @@
+/* Country Pop Up */
+
+.geo-popup {
+  position: fixed;
+  top: 70px; /* Just below navbar */
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: #111;
+  color: #f1f1f1;
+  border: 1px solid #333;
+  padding: 14px 20px;
+  border-radius: 12px;
+  box-shadow: 0 6px 16px rgba(0,0,0,0.6);
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  max-width: 90vw;
+  animation: slideDown 0.4s ease-out;
+}
+
+.geo-popup strong {
+  color: #ffffff;
+}
+
+.geo-close-btn {
+  background: transparent;
+  color: #ccc;
+  font-size: 1.5rem;
+  border: none;
+  cursor: pointer;
+  margin-left: auto;
+  transition: color 0.2s ease;
+}
+
+.geo-close-btn:hover {
+  color: #fff;
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateX(-50%) translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+  }
+}
+
+
+
+/* General Styles */
 
 .image-container {
   position: relative;
@@ -44,13 +97,6 @@ html, body {
   padding: 0;
   box-sizing: border-box;
   padding-top: 20px;
-}
-/* Location Detection */
-.location-message {
-  font-size: 1.1rem;
-  color: #ccc;
-  margin-top: 15px;
-  text-align: center;
 }
 
 /* Reset */

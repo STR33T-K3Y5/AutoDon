@@ -10,41 +10,49 @@ import spannerIcon from '../images/spanner.png';
 import axios from 'axios';
 
 export default function Home() {
-  const [country, setCountry] = useState(null);
+  const [country, setCountry] = useState('');
+  const [showLocationMsg, setShowLocationMsg] = useState(false);
 
   useEffect(() => {
-    const fetchLocation = async () => {
-      try {
-        const res = await axios.get('https://ipapi.co/json/');
-        setCountry(res.data.country_name);
-      } catch (error) {
-        console.error('Geolocation error:', error);
-      }
-    };
-
-    fetchLocation();
+    // Check sessionStorage if popup was dismissed this session
+    const dismissed = sessionStorage.getItem('geoPopupDismissed');
+    if (!dismissed) {
+      axios.get('https://ipapi.co/json/')
+        .then(res => {
+          setCountry(res.data.country_name);
+          setShowLocationMsg(true);
+        })
+        .catch(err => {
+          console.error('Geo lookup failed:', err);
+          setShowLocationMsg(false);
+        });
+    }
   }, []);
+
+  const handleClose = () => {
+    setShowLocationMsg(false);
+    sessionStorage.setItem('geoPopupDismissed', 'true'); // mark dismissed for this session
+  };
 
   return (
     <>
-      {/* Navbar */}
       <Navbar />
 
-      {/* Hero Section */}
+      {showLocationMsg && country && (
+        <div className="geo-popup">
+          <p>
+            🌍 Hello! We noticed you're from <strong>{country}</strong>. We’ll show you parts from your region.
+          </p>
+          <button onClick={handleClose} className="geo-close-btn">×</button>
+        </div>
+      )}
+
       <div className="image-container">
         <img src={autoPartsImage} className="image" alt="AutoParts Image" />
         <h1 className="header">AUTODON</h1>
         <p className="header-motto">Your Trusted Service Partner</p>
-
-        {/* Geo Location Notice */}
-        {country && (
-          <p className="location-message">
-            Hello! We noticed you're from <strong>{country}</strong>. We’ll show you parts from your region.
-          </p>
-        )}
       </div>
 
-      {/* Main Content */}
       <div className="landing-content">
         <h2 className="section-header">Our Range</h2>
 
@@ -79,7 +87,6 @@ export default function Home() {
         </div>
       </div>
 
-      {/* Footer */}
       <footer className="footer">
         <h2>Contact Us</h2>
         <form className="contact-form" onSubmit={(e) => e.preventDefault()}>
