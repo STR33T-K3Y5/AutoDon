@@ -12,9 +12,22 @@ import axios from 'axios';
 export default function Home() {
   const [country, setCountry] = useState('');
   const [showLocationMsg, setShowLocationMsg] = useState(false);
+  const [changingCountry, setChangingCountry] = useState(false);
+  const [messageType, setMessageType] = useState('initial');
+
+  const countries = [
+    'Zimbabwe',
+    'South Africa',
+    'Nigeria',
+    'Kenya',
+    'United States',
+    'United Kingdom',
+    'Germany',
+    'Japan',
+    'Australia',
+  ];
 
   useEffect(() => {
-    // Check sessionStorage if popup was dismissed this session
     const dismissed = sessionStorage.getItem('geoPopupDismissed');
     if (!dismissed) {
       axios.get('https://ipapi.co/json/')
@@ -24,14 +37,21 @@ export default function Home() {
         })
         .catch(err => {
           console.error('Geo lookup failed:', err);
-          setShowLocationMsg(false);
+          setCountry('your region');
+          setShowLocationMsg(true);
         });
     }
   }, []);
 
   const handleClose = () => {
     setShowLocationMsg(false);
-    sessionStorage.setItem('geoPopupDismissed', 'true'); // mark dismissed for this session
+    sessionStorage.setItem('geoPopupDismissed', 'true');
+  };
+
+  const handleCountryChange = (e) => {
+    setCountry(e.target.value);
+    setChangingCountry(false);
+    setMessageType('manual');
   };
 
   return (
@@ -41,18 +61,35 @@ export default function Home() {
       {showLocationMsg && country && (
         <div className="geo-popup">
           <p>
-            🌍 Hello! We noticed you're from <strong>{country}</strong>. We’ll show you parts from your region.
+            {messageType === 'initial'
+              ? `🌍 Hello! We noticed you're from ${country}. We’ll show you parts from your region.`
+              : `✅ We will now show results from ${country}.`}
           </p>
+
+          {changingCountry ? (
+            <select onChange={handleCountryChange} value={country} className="country-select">
+              {countries.map((c) => (
+                <option key={c} value={c}>{c}</option>
+              ))}
+            </select>
+          ) : (
+            <button onClick={() => setChangingCountry(true)} className="geo-change-btn">
+              Change Country
+            </button>
+          )}
+
           <button onClick={handleClose} className="geo-close-btn">×</button>
         </div>
       )}
 
+      {/* Hero Section */}
       <div className="image-container">
         <img src={autoPartsImage} className="image" alt="AutoParts Image" />
         <h1 className="header">AUTODON</h1>
         <p className="header-motto">Your Trusted Service Partner</p>
       </div>
 
+      {/* Main Content */}
       <div className="landing-content">
         <h2 className="section-header">Our Range</h2>
 
@@ -87,6 +124,7 @@ export default function Home() {
         </div>
       </div>
 
+      {/* Footer */}
       <footer className="footer">
         <h2>Contact Us</h2>
         <form className="contact-form" onSubmit={(e) => e.preventDefault()}>

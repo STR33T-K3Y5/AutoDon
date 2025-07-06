@@ -2,51 +2,58 @@
 
 .geo-popup {
   position: fixed;
-  top: 70px; /* Just below navbar */
+  top: 80px;
   left: 50%;
   transform: translateX(-50%);
   background-color: #111;
-  color: #f1f1f1;
-  border: 1px solid #333;
-  padding: 14px 20px;
+  color: #fff;
+  padding: 20px 24px;
   border-radius: 12px;
-  box-shadow: 0 6px 16px rgba(0,0,0,0.6);
+  box-shadow: 0 0 10px rgba(0,0,0,0.6);
   z-index: 9999;
-  display: flex;
-  align-items: center;
-  gap: 14px;
-  max-width: 90vw;
-  animation: slideDown 0.4s ease-out;
+  width: 90%;
+  max-width: 420px;
+  text-align: center;
+  font-family: 'Segoe UI', sans-serif;
 }
 
-.geo-popup strong {
-  color: #ffffff;
+.geo-popup p {
+  margin-bottom: 10px;
+  font-size: 1rem;
 }
 
 .geo-close-btn {
-  background: transparent;
-  color: #ccc;
-  font-size: 1.5rem;
+  position: absolute;
+  top: 6px;
+  right: 12px;
+  background: none;
   border: none;
+  color: #aaa;
+  font-size: 1.5rem;
   cursor: pointer;
-  margin-left: auto;
-  transition: color 0.2s ease;
 }
 
-.geo-close-btn:hover {
-  color: #fff;
+.geo-change-btn {
+  background-color: #fff;
+  color: #000;
+  border: none;
+  padding: 8px 14px;
+  font-weight: 600;
+  border-radius: 6px;
+  margin-top: 8px;
+  cursor: pointer;
 }
 
-@keyframes slideDown {
-  from {
-    opacity: 0;
-    transform: translateX(-50%) translateY(-20px);
-  }
-  to {
-    opacity: 1;
-    transform: translateX(-50%) translateY(0);
-  }
+.country-select {
+  margin-top: 10px;
+  padding: 8px 14px;
+  border-radius: 6px;
+  font-size: 1rem;
+  background-color: #fff;
+  color: #000;
+  border: none;
 }
+
 
 
 
