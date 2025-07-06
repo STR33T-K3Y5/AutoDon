@@ -1,3 +1,4 @@
+import { useEffect, useState } from 'react';
 import '../App.css';
 import Navbar from '../components/Navbar';
 
@@ -6,8 +7,24 @@ import carIcon from '../images/car.png';
 import numberPlateIcon from '../images/number-plate.png';
 import numbersIcon from '../images/numbers.png';
 import spannerIcon from '../images/spanner.png';
+import axios from 'axios';
 
 export default function Home() {
+  const [country, setCountry] = useState(null);
+
+  useEffect(() => {
+    const fetchLocation = async () => {
+      try {
+        const res = await axios.get('https://ipapi.co/json/');
+        setCountry(res.data.country_name);
+      } catch (error) {
+        console.error('Geolocation error:', error);
+      }
+    };
+
+    fetchLocation();
+  }, []);
+
   return (
     <>
       {/* Navbar */}
@@ -18,6 +35,13 @@ export default function Home() {
         <img src={autoPartsImage} className="image" alt="AutoParts Image" />
         <h1 className="header">AUTODON</h1>
         <p className="header-motto">Your Trusted Service Partner</p>
+
+        {/* Geo Location Notice */}
+        {country && (
+          <p className="location-message">
+            Hello! We noticed you're from <strong>{country}</strong>. We’ll show you parts from your region.
+          </p>
+        )}
       </div>
 
       {/* Main Content */}
@@ -55,7 +79,7 @@ export default function Home() {
         </div>
       </div>
 
-      {/* Footer should be OUTSIDE landing-content */}
+      {/* Footer */}
       <footer className="footer">
         <h2>Contact Us</h2>
         <form className="contact-form" onSubmit={(e) => e.preventDefault()}>
